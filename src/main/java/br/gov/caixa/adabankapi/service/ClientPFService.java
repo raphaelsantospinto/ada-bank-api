@@ -58,6 +58,6 @@ public class ClientPFService {
                     modelMapper.map(clientPFRequestDto, client);
                     return clientRepository.save(client);
                 }).map(client -> modelMapper.map(client, ClientPFResponseDto.class))
-                .orElseThrow(() -> new ClientValidationException("Produto nao existe"));
+                .orElseThrow(() -> new ClientValidationException("Cliente Nao existe"));
     }
 }

@@ -9,8 +9,9 @@ import java.time.LocalDate;
 public class ClientPJResponseDto {
 
     private Long id;
+    private String cnpj;
     private String nomeFantasia;
     private LocalDate dataCadastro;
     private StatusClienteEnum status;
-    private String cnpj;
+
 }

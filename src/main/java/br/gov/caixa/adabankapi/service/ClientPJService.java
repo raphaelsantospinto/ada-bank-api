@@ -1,5 +1,9 @@
 package br.gov.caixa.adabankapi.service;
+import br.gov.caixa.adabankapi.dtoRequest.ClientPJRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.ClientPFResponseDto;
 import br.gov.caixa.adabankapi.dtoResponse.ClientPJResponseDto;
+import br.gov.caixa.adabankapi.entity.Client.ClientPJ;
+import br.gov.caixa.adabankapi.exceptions.ClientValidationException;
 import br.gov.caixa.adabankapi.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -33,4 +37,28 @@ public class ClientPJService {
 
     }
 
+    public ClientPJResponseDto getClientPJById(Long id) {
+    return clientRepository.findById(id)
+            .map(cliente -> modelMapper.map(cliente, ClientPJResponseDto.class))
+            .orElseThrow( () -> new ClientValidationException("Cliente nao localizado"));
+
+    }
+
+    public ClientPJResponseDto createClientPJ(ClientPJRequestDto clientPJRequestDto) {
+        ClientPJ cpj = modelMapper.map(clientPJRequestDto, ClientPJ.class);
+        clientRepository.save(cpj);
+        return modelMapper.map(cpj, ClientPJResponseDto.class);
+
+    }
+
+    public ClientPJResponseDto updateById(Long id, ClientPJRequestDto clientPJRequestDto) {
+        return clientRepository.findById(id)
+                .map(client -> {
+                    modelMapper.map(clientPJRequestDto, client);
+                    return clientRepository.save(client);
+                }).map(client -> modelMapper.map(client, ClientPJResponseDto.class))
+                .orElseThrow(()-> new ClientValidationException("Cliente Nao Localizado pelo ID"));
+    }
+
+    public void removeById(Long id) { clientRepository.deleteById(id);}
 }
