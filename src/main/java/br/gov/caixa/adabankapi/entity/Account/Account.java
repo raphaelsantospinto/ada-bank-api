@@ -11,11 +11,14 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="Account_type",
+@DiscriminatorColumn(name="type",
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
     @NotNull
     private BigDecimal balance;
 

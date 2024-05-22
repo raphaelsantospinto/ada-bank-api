@@ -1,7 +1,7 @@
 package br.gov.caixa.adabankapi.entity.Client;
 
 import br.gov.caixa.adabankapi.entity.Account.Account;
-import br.gov.caixa.adabankapi.enums.StatusClienteEnum;
+import br.gov.caixa.adabankapi.enums.StatusClientEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public abstract class Client {
     private LocalDate dataCadastro;
 
     @Enumerated(EnumType.STRING)
-    private StatusClienteEnum status;
+    private StatusClientEnum status;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Account> accounts;

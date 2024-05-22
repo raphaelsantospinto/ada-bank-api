@@ -29,7 +29,6 @@ public class ClientPFController {
     @GetMapping("/{id}")
     public ResponseEntity<ClientPFResponseDto> getClientPFById(@PathVariable Long id){
         ClientPFResponseDto clientPFResponseDto = clientPFService.getClientPFById(id);
-
         return  ResponseEntity.ok(clientPFResponseDto);
     }
     @PostMapping()

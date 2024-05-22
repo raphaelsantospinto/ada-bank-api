@@ -4,7 +4,7 @@ package br.gov.caixa.adabankapi.service;
 import br.gov.caixa.adabankapi.dtoRequest.ClientPFRequestDto;
 import br.gov.caixa.adabankapi.dtoResponse.ClientPFResponseDto;
 import br.gov.caixa.adabankapi.entity.Client.ClientPF;
-import br.gov.caixa.adabankapi.exceptions.ClientValidationException;
+import br.gov.caixa.adabankapi.exceptions.ValidationException;
 import br.gov.caixa.adabankapi.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -30,11 +30,11 @@ public class ClientPFService {
     public ClientPFResponseDto getClientPFById(Long id)  {
             return clientRepository.findById(id)
                     .map(clientPF -> modelMapper.map(clientPF, ClientPFResponseDto.class))
-                    .orElseThrow(() -> new ClientValidationException("Produto nao existe"));
+                    .orElseThrow(() -> new ValidationException("Produto nao existe"));
     }
 
     public List<ClientPFResponseDto> getAllClients() {
-        return clientRepository.findAll()
+        return clientRepository.findAllPF()
                 .stream()
                 .map(client-> modelMapper.map(client, ClientPFResponseDto.class))
                 .toList();
@@ -58,6 +58,6 @@ public class ClientPFService {
                     modelMapper.map(clientPFRequestDto, client);
                     return clientRepository.save(client);
                 }).map(client -> modelMapper.map(client, ClientPFResponseDto.class))
-                .orElseThrow(() -> new ClientValidationException("Cliente Nao existe"));
+                .orElseThrow(() -> new ValidationException("Cliente Nao existe"));
     }
 }
