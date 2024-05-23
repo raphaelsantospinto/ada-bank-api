@@ -1,4 +1,4 @@
-package br.gov.caixa.adabankapi.dtoRequest;
+package br.gov.caixa.adabankapi.dtoRequest.account;
 
 import lombok.Data;
 

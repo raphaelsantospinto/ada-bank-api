@@ -1,17 +1,14 @@
-package br.gov.caixa.adabankapi.dtoResponse;
+package br.gov.caixa.adabankapi.dtoRequest.client;
 
 import br.gov.caixa.adabankapi.enums.StatusClientEnum;
 import lombok.Data;
 
 import java.time.LocalDate;
-
 @Data
-public class ClientPJResponseDto {
+public class ClientPFRequestDto {
 
-    private Long id;
-    private String cnpj;
-    private String nomeFantasia;
+    private String nome;
     private LocalDate dataCadastro;
     private StatusClientEnum status;
-
+    private String cpf;
 }

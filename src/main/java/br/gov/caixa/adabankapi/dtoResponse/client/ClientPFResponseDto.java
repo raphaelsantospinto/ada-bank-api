@@ -1,4 +1,4 @@
-package br.gov.caixa.adabankapi.dtoResponse;
+package br.gov.caixa.adabankapi.dtoResponse.client;
 
 import br.gov.caixa.adabankapi.enums.StatusClientEnum;
 import lombok.Data;

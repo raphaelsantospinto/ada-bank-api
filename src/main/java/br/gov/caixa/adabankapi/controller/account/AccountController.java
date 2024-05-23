@@ -1,6 +1,6 @@
 package br.gov.caixa.adabankapi.controller.account;
 
-import br.gov.caixa.adabankapi.dtoResponse.AccountResponseDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountResponseDto;
 import br.gov.caixa.adabankapi.service.account.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

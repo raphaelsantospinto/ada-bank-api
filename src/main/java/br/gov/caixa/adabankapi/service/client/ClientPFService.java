@@ -1,8 +1,8 @@
 package br.gov.caixa.adabankapi.service;
 
 
-import br.gov.caixa.adabankapi.dtoRequest.ClientPFRequestDto;
-import br.gov.caixa.adabankapi.dtoResponse.ClientPFResponseDto;
+import br.gov.caixa.adabankapi.dtoRequest.client.ClientPFRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.client.ClientPFResponseDto;
 import br.gov.caixa.adabankapi.entity.Client.ClientPF;
 import br.gov.caixa.adabankapi.exceptions.ValidationException;
 import br.gov.caixa.adabankapi.repository.ClientRepository;

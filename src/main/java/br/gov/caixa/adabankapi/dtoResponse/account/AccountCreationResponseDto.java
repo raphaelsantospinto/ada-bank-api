@@ -1,4 +1,4 @@
-package br.gov.caixa.adabankapi.dtoResponse;
+package br.gov.caixa.adabankapi.dtoResponse.account;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;

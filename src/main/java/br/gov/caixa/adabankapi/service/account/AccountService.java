@@ -1,14 +1,15 @@
 package br.gov.caixa.adabankapi.service.account;
 
-import br.gov.caixa.adabankapi.dtoResponse.AccountResponseDto;
+import br.gov.caixa.adabankapi.dtoRequest.account.AccountDepositWidrawRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountDepositWidrawResponseDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountResponseDto;
 
-import br.gov.caixa.adabankapi.entity.Account.Account;
 import br.gov.caixa.adabankapi.exceptions.ValidationException;
 import br.gov.caixa.adabankapi.repository.AccountRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,23 @@ public class AccountService {
        return accountRepository.findAll().stream()
                 .map(account -> modelMapper.map(account, AccountResponseDto.class))
                 .collect(Collectors.toList());
+    }
+
+    public AccountDepositWidrawResponseDto deposit (AccountDepositWidrawRequestDto accountDepositWidrawRequestDto){
+       return accountRepository.findById(accountDepositWidrawRequestDto.getClientId())
+                .map(account -> {
+                    if (account.getBalance().compareTo(accountDepositWidrawRequestDto.getValue()) > 0) {
+                        account.getBalance().subtract(accountDepositWidrawRequestDto.getValue());
+                    } else throw new ValidationException("Saldo Insuficiente!");
+                    return account;
+                })
+                .map(accountRepository::save)
+                .map(account -> modelMapper.map(account, AccountDepositWidrawResponseDto.class))
+                .orElseThrow(()-> new ValidationException("Erro na hora de gravar o deposito!"));
+
+    }
+
+    public AccountDepositWidrawResponseDto widraw (AccountDepositWidrawRequestDto accountDepositWidrawRequestDto){
+        return null; //todo
     }
 }

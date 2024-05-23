@@ -1,7 +1,9 @@
 package br.gov.caixa.adabankapi.controller.account;
 
-import br.gov.caixa.adabankapi.dtoRequest.AccountCreationRequestDto;
-import br.gov.caixa.adabankapi.dtoResponse.AccountCreationResponseDto;
+import br.gov.caixa.adabankapi.dtoRequest.account.AccountDepositWidrawRequestDto;
+import br.gov.caixa.adabankapi.dtoRequest.account.AccountIdRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountCreationResponseDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountDepositWidrawResponseDto;
 import br.gov.caixa.adabankapi.service.account.CurrentAccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,12 @@ public class CurrentAccountController {
     }
 
     @PostMapping()
-    public ResponseEntity<AccountCreationResponseDto> createAccount (@RequestBody AccountCreationRequestDto accountCreationRequestDto){
-        return ResponseEntity.ok(currentAccountService.create(accountCreationRequestDto));
+    public ResponseEntity<AccountCreationResponseDto> createAccount (@RequestBody AccountIdRequestDto accountIdRequestDto){
+        return ResponseEntity.ok(currentAccountService.create(accountIdRequestDto));
+    }
+
+    @PostMapping("/depositar")
+    public ResponseEntity<AccountDepositWidrawResponseDto>deposit(@RequestBody AccountDepositWidrawRequestDto accountDepositWidrawRequestDto){
+        return null; //TODO
     }
 }

@@ -1,8 +1,8 @@
 package br.gov.caixa.adabankapi.service.account;
 
 
-import br.gov.caixa.adabankapi.dtoRequest.AccountCreationRequestDto;
-import br.gov.caixa.adabankapi.dtoResponse.AccountCreationResponseDto;
+import br.gov.caixa.adabankapi.dtoRequest.account.AccountIdRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.account.AccountCreationResponseDto;
 import br.gov.caixa.adabankapi.entity.Account.CurrentAccount;
 import br.gov.caixa.adabankapi.exceptions.ValidationException;
 import br.gov.caixa.adabankapi.repository.AccountRepository;
@@ -26,7 +26,7 @@ public class CurrentAccountService {
         this.modelMapper = modelMapper;
     }
 
-    public AccountCreationResponseDto create(AccountCreationRequestDto accountCreationRequestDto) {
+    public AccountCreationResponseDto create(AccountIdRequestDto accountCreationRequestDto) {
         CurrentAccount cc = new CurrentAccount();
         cc.setBalance(BigDecimal.ZERO);
         cc.setCreatedDate(LocalDate.now());

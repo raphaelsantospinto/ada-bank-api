@@ -1,10 +1,7 @@
-package br.gov.caixa.adabankapi.controller;
+package br.gov.caixa.adabankapi.controller.client;
 
-import br.gov.caixa.adabankapi.dtoRequest.ClientPFRequestDto;
-import br.gov.caixa.adabankapi.dtoRequest.ClientPJRequestDto;
-import br.gov.caixa.adabankapi.dtoResponse.ClientPFResponseDto;
-import br.gov.caixa.adabankapi.dtoResponse.ClientPJResponseDto;
-import br.gov.caixa.adabankapi.service.ClientPFService;
+import br.gov.caixa.adabankapi.dtoRequest.client.ClientPJRequestDto;
+import br.gov.caixa.adabankapi.dtoResponse.client.ClientPJResponseDto;
 import br.gov.caixa.adabankapi.service.ClientPJService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
